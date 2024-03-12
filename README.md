@@ -4,13 +4,36 @@
 Welcome back to my page! My name is Jazzy the Creator of this code. 
 
 ## Background 🌄
-
+This project revolves around analyzing climate data from Honolulu, Hawaii, using Python and SQLAlchemy. By diving into precipitation and temperature trends, we're helping travelers plan their Hawaiian getaways wisely. With Flask API routes, we're making it a breeze for users to access this valuable climate info. It's all about empowering travelers with data-driven insights for unforgettable vacations in paradise! 🌴✨
 
 ## Analysis 🔍
 
+- Most Active Station: **USC00519281**
+- Lowest Temperature: **54.0 F**
+- Highest Temperature: **85.0 F**
+- Average Temperature: **71.66378066378067 F**
 
 ## Links 🔗
 
+- **SQLAlchemy Documentation:**
+    
+    - Access comprehensive documentation for SQLAlchemy to understand its functionalities and usage.
+    - [docs.sqlalchemy.org/en/20/ ](https://docs.sqlalchemy.org/en/20/)
+
+- **Pandas Documentation:**
+    
+    - Explore the documentation for Pandas library to manipulate and analyze data efficiently.
+    - https://pandas.pydata.org/docs/
+
+- **Matplotlib Documentation:**
+    
+    - Refer to the Matplotlib documentation for creating visualizations and plots to represent your data effectively.
+    - https://matplotlib.org/stable/contents.html 
+
+- **Flask Documentation:**
+    
+    - Utilize the Flask documentation for building web applications and designing APIs to serve your climate analysis.
+    - https://flask.palletsprojects.com/en/2.0.x/
 
 ## Happy Coding 🎉
 #### PS. if you ever wondered what Honolulu looks like - take a look BELOW ⬇️
