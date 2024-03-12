@@ -39,6 +39,7 @@ app = Flask(__name__)
 # Flask Routes
 #################################################
 
+# MAIN HOME ROUTE
 @app.route("/")
 def home():
     return (
@@ -50,6 +51,7 @@ def home():
         f"/api/v1.0/<start> and /api/v1.0/<start>/<end>"
     )
 
+# PERCIPITATION ROUTE
 @app.route("/api/v1.0/precipitation")
 def rain_route():
     prev_year = dt.date(2017,8,23) - dt.timedelta(days=365)
@@ -67,7 +69,7 @@ def rain_route():
 
     return jsonify(precipitation_list)
 
-
+# STATIONS ROUTE
 @app.route("/api/v1.0/stations")
 def stations_route():
     
@@ -88,7 +90,7 @@ def stations_route():
 
     return jsonify(station_list)
 
-
+# TEMPERATURE ROUTE
 @app.route("/api/v1.0/tobs")
 def temperature():
 
@@ -106,23 +108,31 @@ def temperature():
 
     return jsonify(temp_list)
 
+# START & START / END ROUTE
 @app.route("/api/v1.0/<start>")
 @app.route("/api/v1.0/<start>/<end>")
 
-def start_end_route(start, end):
+def start_end_route(start, end=None):
     
     start = dt.datetime.strptime(start, "%Y%m%d")
-    end = dt.datetime.strptime(end, "%Y%m%d")
+    print("*********************************************")
+    print(start)
 
-    final_list = [func.min(measurement.tobs), func.avg(measurement.tobs), func.max(measurement.tobs)]
-
-    results = Session.query(*final_list).filter(start).all()
+    if not end:
+        final_list = [func.min(measurement.tobs), func.avg(measurement.tobs), func.max(measurement.tobs)]
+        results = Session.query(*final_list).filter(measurement.date >= start).all()
+        Session.close()
+        final_list = list(np.ravel(results))
+        return jsonify(final_list)
     
-    Session.close()
-
-    final_list = list(np.ravel(results))
-
-    return jsonify(final_list)
+    else:
+        end = dt.datetime.strptime(end, "%Y%m%d")
+        final_list = [func.min(measurement.tobs), func.avg(measurement.tobs), func.max(measurement.tobs)]
+        results = Session.query(*final_list).filter(measurement.date >= start, measurement.date <= end).all()
+        Session.close()
+        final_list = list(np.ravel(results))
+        return jsonify(final_list)
+    
 
 if __name__ == "__main__":
     app.run(debug=True)
