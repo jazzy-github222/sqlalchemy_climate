@@ -48,7 +48,8 @@ def home():
         f"/api/v1.0/precipitation<br/>"
         f"/api/v1.0/stations<br/>"
         f"/api/v1.0/tobs<br/>"
-        f"/api/v1.0/<start> and /api/v1.0/<start>/<end>"
+        f"/api/v1.0/<start>"
+        f"/api/v1.0/<start>/<end>"
     )
 
 # PERCIPITATION ROUTE
